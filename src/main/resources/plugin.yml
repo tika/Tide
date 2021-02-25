@@ -1,0 +1,7 @@
+name: Tide
+version: @version@
+main: one.tika.tide.Tide
+api-version: 1.16
+authors: [ Tika ]
+description: Surf along the waves of Spigot
+website: tika.one
