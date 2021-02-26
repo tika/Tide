@@ -14,7 +14,6 @@ public class Tide extends JavaPlugin {
         instance = this;
 
         getServer().getPluginManager().registerEvents(new MenuListener(), this);
-
         Hue.get(this).print(
                 "&bTide &8> &7Loaded Version &b" + getDescription().getVersion(),
                 "&bTide &8> &7Loaded &b" + getDepending() + "&7 plugins depending Tide"
