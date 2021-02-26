@@ -26,6 +26,7 @@ public class Hue {
             player.sendMessage(parse(message));
     }
 
+    // TODO: Add default formatting etc..
     public static String parse(String raw) {
         return colorize(raw);
     }

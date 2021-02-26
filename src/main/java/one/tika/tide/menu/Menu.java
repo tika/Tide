@@ -1,5 +1,6 @@
 package one.tika.tide.menu;
 
+import one.tika.tide.utils.Hue;
 import one.tika.tide.utils.ItemUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -32,7 +33,7 @@ public abstract class Menu implements InventoryHolder {
     public abstract boolean isStealable();
 
     public void open() {
-        inventory = Bukkit.createInventory(this, getRows() * 9, getMenuName());
+        inventory = Bukkit.createInventory(this, getRows() * 9, Hue.colorize(getMenuName()));
         this.setMenuItems();
         user.openInventory(inventory);
     }
