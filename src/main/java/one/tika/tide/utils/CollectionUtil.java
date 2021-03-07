@@ -1,6 +1,7 @@
 package one.tika.tide.utils;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class CollectionUtil {
     public static <K, V> TreeMap<K, V> treeMap(K key1, V value1, Object... objects) {
@@ -9,8 +10,7 @@ public class CollectionUtil {
         ret.put(key1, value1);
 
         Iterator<Object> iter = Arrays.asList(objects).iterator();
-        while (iter.hasNext())
-        {
+        while (iter.hasNext()) {
             K key = (K) iter.next();
             V value = (V) iter.next();
             ret.put(key, value);
@@ -26,8 +26,7 @@ public class CollectionUtil {
         ret.put(key1, value1);
 
         Iterator<Object> iter = Arrays.asList(objects).iterator();
-        while (iter.hasNext())
-        {
+        while (iter.hasNext()) {
             K key = (K) iter.next();
             V value = (V) iter.next();
             ret.put(key, value);
@@ -50,5 +49,13 @@ public class CollectionUtil {
         }
 
         return result;
+    }
+
+    // Requires Java 8
+    public static <E> E getWeightedRandom(Stream<Map.Entry<E, Double>> weights, Random random) {
+        return weights
+                .map(e -> new AbstractMap.SimpleEntry<>(e.getKey(), -Math.log(random.nextDouble()) / e.getValue()))
+                .min(Map.Entry.comparingByValue())
+                .orElseThrow(IllegalArgumentException::new).getKey();
     }
 }

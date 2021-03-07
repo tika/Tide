@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public abstract class CommandBase implements CommandExecutor, TabCompleter {
 
     public abstract String getName();
+
     public abstract List<SubcommandBase> getSubcommands();
 
     public abstract void perform(CommandSender sender, org.bukkit.command.Command command, String label, String[] args);
@@ -33,9 +34,10 @@ public abstract class CommandBase implements CommandExecutor, TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 0) return null;
-        if (args.length == 1) return getSubcommands().stream().map(SubcommandBase::getName).collect(Collectors.toList());
+        if (args.length == 1)
+            return getSubcommands().stream().map(SubcommandBase::getName).collect(Collectors.toList());
 
-        for (SubcommandBase subcommand : getSubcommands()){
+        for (SubcommandBase subcommand : getSubcommands()) {
             if (args[0].equalsIgnoreCase(subcommand.getName()))
                 return subcommand.getParameters(sender, args);
         }

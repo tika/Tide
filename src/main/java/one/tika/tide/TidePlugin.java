@@ -13,6 +13,7 @@ public abstract class TidePlugin extends JavaPlugin {
 
     /**
      * Don't forget to register in plugin.yml!
+     *
      * @param commands
      */
     public void registerCommands(CommandBase... commands) {

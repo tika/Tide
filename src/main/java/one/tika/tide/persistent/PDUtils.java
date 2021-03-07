@@ -18,13 +18,13 @@ public class PDUtils {
         this.key = key;
     }
 
-    public boolean itemDataContainsKey(ItemStack item){
+    public boolean itemDataContainsKey(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         PersistentDataContainer itemData = meta.getPersistentDataContainer();
         return itemData.getKeys().contains(key);
     }
 
-    public boolean playerDataContainsKey(Player player){
+    public boolean playerDataContainsKey(Player player) {
         PersistentDataContainer playerData = player.getPersistentDataContainer();
         return playerData.getKeys().contains(key);
     }
@@ -96,7 +96,7 @@ public class PDUtils {
 
     public void addPlayerDataInteger(Player player, int value) {
         PersistentDataContainer playerData = player.getPersistentDataContainer();
-        if (!playerData.has(key, PersistentDataType.INTEGER)){
+        if (!playerData.has(key, PersistentDataType.INTEGER)) {
             setPlayerDataInteger(player, 0);
         }
         int finalValue = playerData.get(key, PersistentDataType.INTEGER) + value;
@@ -105,7 +105,7 @@ public class PDUtils {
 
     public void addPlayerDataDouble(Player player, double value) {
         PersistentDataContainer playerData = player.getPersistentDataContainer();
-        if (!playerData.has(key, PersistentDataType.DOUBLE)){
+        if (!playerData.has(key, PersistentDataType.DOUBLE)) {
             setPlayerDataDouble(player, 0D);
         }
         double finalValue = playerData.get(key, PersistentDataType.DOUBLE) + value;
@@ -114,7 +114,7 @@ public class PDUtils {
 
     public void addPlayerDataLong(Player player, long value) {
         PersistentDataContainer playerData = player.getPersistentDataContainer();
-        if (!playerData.has(key, PersistentDataType.LONG)){
+        if (!playerData.has(key, PersistentDataType.LONG)) {
             setPlayerDataLong(player, 0L);
         }
         long finalValue = playerData.get(key, PersistentDataType.LONG) + value;
@@ -123,7 +123,7 @@ public class PDUtils {
 
     public void addPlayerDataFloat(Player player, float value) {
         PersistentDataContainer playerData = player.getPersistentDataContainer();
-        if (!playerData.has(key, PersistentDataType.FLOAT)){
+        if (!playerData.has(key, PersistentDataType.FLOAT)) {
             setPlayerDataFloat(player, 0F);
         }
         float finalValue = playerData.get(key, PersistentDataType.FLOAT) + value;
