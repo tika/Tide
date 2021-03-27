@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -63,9 +64,31 @@ public class Hue {
         return String.join(", ", list);
     }
 
-
     public static ChatColor getColor(String coloredRaw) {
         return ChatColor.getByChar(ChatColor.stripColor(coloredRaw).substring(0, 2));
+    }
+
+    private final static List<String> trueList = Arrays.asList(
+            "yes",
+            "y",
+            "true",
+            "on"
+    );
+
+    private final static List<String> falseList = Arrays.asList(
+            "no",
+            "n",
+            "false",
+            "off"
+    );
+
+    public static boolean isBoolString(String raw) {
+        return falseList.stream().anyMatch(it -> it.equalsIgnoreCase(raw))
+                || trueList.stream().anyMatch(it -> it.equalsIgnoreCase(raw));
+    }
+
+    public static boolean isTrueString(String raw) {
+        return trueList.stream().anyMatch(it -> it.equalsIgnoreCase(raw));
     }
 
     public static Hue get(JavaPlugin plugin) {
