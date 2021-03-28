@@ -82,6 +82,12 @@ public class Hue {
             "off"
     );
 
+    public static List<String> getBoolStrings() {
+        final List<String> boolStrings = trueList;
+        boolStrings.addAll(falseList);
+        return boolStrings;
+    }
+
     public static boolean isBoolString(String raw) {
         return falseList.stream().anyMatch(it -> it.equalsIgnoreCase(raw))
                 || trueList.stream().anyMatch(it -> it.equalsIgnoreCase(raw));
